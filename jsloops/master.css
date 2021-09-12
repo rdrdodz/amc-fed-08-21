@@ -1,0 +1,20 @@
+.grid-container{
+    width: 60%;
+    margin: 10px auto;
+    display: grid;
+    grid-template-columns: 4fr 3fr;
+}
+
+.grid-container .header{
+    background: blue;
+    color: white;
+    display: none;
+}
+.grid-container .item{
+    border: 1px solid blue;
+}
+
+.item:nth-of-type(4n+2),
+.item:nth-of-type(4n+3){
+    background: skyblue;
+}
