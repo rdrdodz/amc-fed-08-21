@@ -15,9 +15,9 @@ console.log(button);
 
 
 function putItems(st, count){
-    var innerStr = "";
-    for(var i = 0; i < count; i++){
-        innerStr = innerStr + "<li>" + st + " " + i + "</li>"
-    }
+    var innerStr = ul.innerHTML;
+    
+        innerStr = innerStr + "<li>" + st + " " + i +" "+ count + "</li>"
+  
     ul.innerHTML = innerStr;
 }
