@@ -6,6 +6,7 @@ var st2 = st.substring(15,18);
 var st3 = "  a quick brown fox jumps over the lazy dog  ".trim();
 var len = st.length;    // Length of the String
 // visit www.w3schools.com for Javascript examples
+// also visit leetcode.com for Data Structure and more problems on Strings
 
 var st4 = "This is a Life Long achievement for Life Long efforts".toLowerCase();
 var toSearch = "Life Long".toLowerCase();
