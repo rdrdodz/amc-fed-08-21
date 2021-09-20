@@ -24,7 +24,32 @@ return true
 
 */
 
+var checkStringSubSequence = (s,t) => {
+    var result = false;
+    if((s !== undefined) && (t !== undefined) && (s.length > 0) && (t.length > 0)) {    
+        var subIdx = 0;
+        for(var i = 0; i < t.length; i++) {
+            result = false;
+            for(var j = subIdx; j < s.length; j++) {
+                if(t[i] === s[j]) {
+                    result = true;
+                    subIdx = j + 1;
+                    break;
+                }
+            }
+            if(!result) {
+                break;
+            }
+        }
+    }
+    return result;
+};
+console.log("subSequence('baabaandftgnga', 'bang'): " + checkStringSubSequence('baabaandftgnga', 'bang'));
+console.log("subSequence('baaaandftg', 'bagn'): " + checkStringSubSequence('baaaandftg', 'bagn'));
+console.log("subSequence('bandftg', 'baang'): " + checkStringSubSequence('bandftg', 'baang'));
+console.log("subSequence('bamandftg', 'baang'): " + checkStringSubSequence('bamandftg', 'baang'));
 
+/*
 var sortedArr = [-15,-10,-4, 0, 5,7,8,9,20,23];
 //we have sorted array and we want to take the square of each 
 //element and give the result in sorted form.
@@ -119,4 +144,4 @@ var [max, min] = getMinAndMax(arr);
 
 console.log("Min element is: " + min);
 console.log("Max element is: " + max);
-
+*/
