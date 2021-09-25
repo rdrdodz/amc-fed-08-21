@@ -2,6 +2,7 @@ var arr3 = [1,2,3,4,5,6,7,8,9];
 var arr2 = [2,6,3,5,6,7];
 var arr = [-10,-3,-1,5,6,7, -20,-30];
 var ArrOfSt = ["Fox","Coin","Blue","Yellow","Red"];
+var sortedArr = [-15,-10,-4,0,5,7,8,9,20,23];
 
 //Sorting an Array; sorting is done lexiographically. Arrow function was introducted because of Microsoft's C-sharp language
 
@@ -26,8 +27,6 @@ console.log(arr);
 arr = arr.map(e=>2*e+3);
 console.log(arr);
 
-
-
 // Map each element of Array to 3 x the element plus index.
 
 arr2 = arr2.map((e,i)=>3*e+i);
@@ -40,12 +39,34 @@ var sum = arr3.reduce((acc,crr)=>acc+crr,0);
 
 var sum = arr3.reduce((acc,crr)=>acc*crr,1);
 
-
 // To get all even numbers
 var arr4 = [1,2,3,4,5,6,7,8,9,15,20,30];
 var arr5 = arr4.filter(e=>e%2===0);
 console.log("Array 5 is Even numbers only", arr5);
 
+// We have sorted array and we want to take the square of each element and give the result in sorted form. 
+// Square of a number is always positive
+
+
+sortedArr = sortedArr.map(e=>e*e);
+var i = 0;
+var j = sortedArr.length-1;
+op = [];
+while (i<j){
+    if(sortedArr[i] >= sortedArr[j]){
+        op.push(sortedArr[i]);
+        i++;
+    } else{
+        op.push(sortedArr[j]);
+        j--;
+    }
+}
+op = op.reverse();
+console.log(op);
+
+//console.log(sortedArr);
+
+// Working with Functions
 // var getMinMax = function(a);
 
 // function getMinMax(a){
