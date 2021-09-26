@@ -6,6 +6,20 @@
 
 //sentence, is, words
 
+var st1 = "this is a sentence with many words";
+var st2 = "sentence number two is also composed of words";
+
+var set1 = new Set(st1.split(" "));
+var set2 = new Set (st2.split(" "));
+
+const commonWords = new Set([...set2].filter(x => set1.has(x)))
+
+var output = "";
+commonWords.forEach(function(value) {
+    output += value + ", ";
+})
+console.log(output);
+
 var x = 10;
 var y = x;
 
