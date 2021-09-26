@@ -23,8 +23,24 @@ t = "baang"
 return true
 
 */
-
 var checkStringSubSequence = (s,t) => {
+    var i = 0; //index for s
+    var j = 0; //index for t
+    while(i < s.length && j < t.length){
+        if(s[i] === t[j]){
+            j++;
+        }
+        i++;
+    }
+
+    if(j === t.length){
+        return true;
+    }
+    return false;
+};
+
+
+var checkStringSubSequence1 = (s,t) => {
     var result = false;
     if((s !== undefined) && (t !== undefined) && (s.length > 0) && (t.length > 0)) {    
         var subIdx = 0;
