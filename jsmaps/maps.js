@@ -6,6 +6,32 @@
 
 //sentence, is, words
 
+var findCommonWords = (st1,st2) => {
+    var result = new Array();
+    if((st1 !== undefined) && (st1.length > 0) && (st2 !== undefined) && (st2.length > 0)) {
+        var space = " ";
+        var st1Set = new Set(st1.split(space));
+        var st2Set = new Set(st2.split(space));
+        
+        st2Set.forEach((wordSt2) => {
+            if(st1Set.has(wordSt2)) {
+                result.push(wordSt2);
+            }
+        });    
+    }   
+    return result;
+};
+var st1 = "this is a sentence with many words";
+var st2 = "sentence number two is also composed of words";
+
+var commonWords = findCommonWords(st1, st2);
+var resultCommonWords = "";
+for(var i = 0; i < commonWords.length; i++) {
+    resultCommonWords += (i === 0) ? commonWords[i] : ", " + commonWords[i];
+}
+console.log(resultCommonWords);
+
+/*
 var x = 10;
 var y = x;
 
@@ -68,3 +94,4 @@ for(var [word, count] of countMap){
 
 console.log(countMap);
 
+*/
