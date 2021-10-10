@@ -1,0 +1,56 @@
+html {
+    box-sizing: border-box;
+  }
+*, *:before, *:after {
+box-sizing: inherit;
+}
+
+.outer-container{
+    width: 80%;
+    padding: 10px;
+    border: 5px solid blue;
+    margin: 10px auto;
+    font-size: 0;
+}
+
+.img-container{
+    position: relative;
+}
+
+img{
+    width: 100%;
+}
+
+.button{
+    background-color: aqua;
+    font-size: 4vw;
+    border: none;
+    width: 5vw;
+    height: 10vw;
+    position: absolute;
+    bottom: calc(50% - 5vw);
+}
+
+.button:hover{
+    background-color: skyblue;
+}
+
+.button:active{
+    background-color: blue;
+}
+
+.left-button{
+    border-top-right-radius: 100% 50%;
+    border-bottom-right-radius: 100% 50%;
+    left: 0;
+}
+
+.right-button{
+    border-top-left-radius: 100% 50%;
+    border-bottom-left-radius: 100% 50%;
+    right: 0;
+}
+
+
+
+  
