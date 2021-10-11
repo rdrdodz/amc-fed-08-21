@@ -3,12 +3,25 @@ var img = document.querySelector(".img-container img");
 var maxNumOfImages = 10;
 
 rightButton.addEventListener("click", function(){
-    changeImgNumber("right");
+    clickListner("right");
 });
 
 leftButton.addEventListener("click", function(){
-    changeImgNumber("left");
+    clickListner("left");
 });
+
+function clickListner(dir){
+    rightButton.removeEventListener("click", clickListner);
+    img.style.opacity = "0";
+    img.addEventListener("transitionend", function transitionEnd(){
+        img.removeEventListener("transitionend", transitionEnd);
+        changeImgNumber(dir);
+        img.style.opacity = "1";
+        img.addEventListener("transitionend", function(){
+            rightButton.addEventListener("click", clickListner);
+        });
+    });
+}
 
 function changeImgNumber(eve){
     var imgSrc = img.src;

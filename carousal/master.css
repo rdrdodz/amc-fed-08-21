@@ -19,6 +19,8 @@ box-sizing: inherit;
 
 img{
     width: 100%;
+    opacity: 1;
+    transition: opacity 1s;
 }
 
 .button{
