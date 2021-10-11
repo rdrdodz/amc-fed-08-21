@@ -1,6 +1,22 @@
 var [leftButton, rightButton] = document.querySelectorAll(".img-container .button");
 var img = document.querySelector(".img-container img");
+var imgContainer = document.querySelector(".img-container");
 var maxNumOfImages = 10;
+var autoRun;
+
+imgContainer.addEventListener("mouseover", function(){
+    clearInterval(autoRun);
+});
+
+imgContainer.addEventListener("mouseout", function(){
+    autoRunFunction();
+});
+
+function autoRunFunction(){
+    autoRun = setInterval(function(){ 
+        clickListner("right")
+    }, 3000);    
+}
 
 rightButton.addEventListener("click", function(){
     clickListner("right");
@@ -43,6 +59,6 @@ function changeImgNumber(eve){
     console.log(imgSrc, imgSrcLeft,"====", imgSrcMid, "====", imgSrcRight);
 }
 
-
+autoRunFunction();
 
 
