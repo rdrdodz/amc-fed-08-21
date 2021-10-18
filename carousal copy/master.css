@@ -29,6 +29,8 @@ img{
 .images .slider-img{
     position: absolute;
     left: 0;
+}
+.start-transition{
     transition: left 2s;
 }
 
