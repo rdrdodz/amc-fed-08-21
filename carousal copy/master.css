@@ -31,7 +31,7 @@ img{
     left: 0;
 }
 .start-transition{
-    transition: left 2s;
+    transition: left 0.5s;
 }
 
 .filler-img{
