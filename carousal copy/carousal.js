@@ -1,0 +1,34 @@
+var [leftButton, rightButton] = document.querySelectorAll(".img-container .button");
+var sliderImages = document.querySelectorAll(".img-container .slider-img");
+var imgContainer = document.querySelector(".img-container");
+var maxNumOfImages = 10;
+
+var crrInd = 1;
+
+sliderImages[(crrInd+1+3)%3].style.zIndex = "5";
+sliderImages[crrInd].style.zIndex = "20";
+sliderImages[(crrInd-1+3)%3].style.zIndex = "10";
+
+
+rightButton.addEventListener("click", slide = function(){
+    rightButton.removeEventListener("click", slide);
+    sliderImages[crrInd].classList.add("start-transition");
+    sliderImages[crrInd].style.left = "100%";
+
+    sliderImages[crrInd].addEventListener("transitionend", tra = function(){
+        sliderImages[crrInd].removeEventListener("transitionend", tra)
+        sliderImages[crrInd].classList.remove("start-transition");
+        
+        sliderImages[crrInd].style.zIndex = "5";
+        sliderImages[(crrInd-1+3)%3].style.zIndex = "20";
+        sliderImages[(crrInd+1+3)%3].style.zIndex = "10";
+        
+        sliderImages[crrInd].style.left = "0";
+        
+        crrInd = (crrInd-1+3)%3;
+        console.log("Zeb")
+        console.log(crrInd);
+        rightButton.addEventListener("click", slide);
+    });
+
+});

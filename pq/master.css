@@ -1,0 +1,12 @@
+.biggest-one{
+    text-align: center;
+    padding: 10px;
+    border: 10px solid black;
+}
+
+.input-form{
+    width: 30%;
+    margin: 10px auto;
+    border: 2px solid black;
+    padding: 10px;
+}
