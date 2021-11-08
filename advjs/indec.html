@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body>ol>li{
+            opacity: 0;
+        }
+        
+        .show{
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <h1>Advanced JS</h1>
+    <ol>
+        <li>
+            Make the following functions
+            <ul>
+                <li>A function "identity" which takes one input and returns the same</li>
+                <li>A function "add" which takes 2 inputs and returns their sum</li>
+                <li>A function "sub" which takes 2 inputs and returns their difference a-b </li>
+                <li>A function "mul" which takes 2 inputs and returns their product </li>
+            </ul>
+            <br><hr><br>
+        </li>
+        <li>
+            write a function addf that adds from two invocations addf(3)(4) //gives 7
+            <br><hr><br>
+        </li>
+        <li>write a function 'liftf' that takes a binary functions like 'sub'/'add', and makes it callable with two invocattions like <br>
+            var subf = liftf(sub); and subf(4)(3) will give -1
+            <br><hr><br>
+        </li>
+        <li>write a function 'curry' that takes a binary function like 'sub' and an number argument,
+            and returns a function that can take a second argument. <br>
+            var add3 = curry(add, 3); <br>
+            add3(4) will give 7
+            <ul>
+                <li>Do this without using 'liftf' </li>
+                <li>Do this by using 'liftf'</li>
+            </ul>
+            <br><hr><br>
+        </li>
+        <li>Write a function "twice" that takes a binary function and returns <br>
+            a unary function that passes its argument to the binary function twice
+            <pre>
+                add(11, 11);//22
+                var double = twice(add);
+                double(11);//22
+                var square = twice(mul);
+                square(11);//121
+              </pre>
+              <br><hr><br>
+        </li>
+        <li>
+            Write reverse, a function that reverses the arguments of a binary function <br>
+            <pre>
+                sub(15, 10);//5
+                var bus = reverse(sub);
+                bus(15, 10);//-5
+            </pre>
+            <br><hr><br>
+        </li>
+        <li>
+            Write a function "composeu" that takes two unary functions and returns <br>
+            a unary function that calls them both <br>
+            <pre>
+                composeu(square, doubl)(5);//doubl(square(5)) = 50
+                composeu(doubl, square)(5);// square(doubl(5)) = 100
+            </pre>
+            <br><hr><br>
+        </li>
+        <li>
+            Write a function "composeb" that takes two binary functions and returns <br>
+            a function that calls them both <br>
+            
+            <pre>
+                composeb(add, mul)(2, 3, 7);// = 35
+            </pre>
+            <br><hr><br>
+        </li>
+        <li>
+            Write a "limit" function that allows a binary function to be called a limited
+            number of times<br>
+          
+            <pre>
+                var add_ltd = limit(add, 2);
+                add_ltd(3, 4);//7
+                add_ltd(3, 4);//7
+                add_ltd(3, 4);//undefined
+            </pre>
+            <br><hr><br>
+        </li>
+        
+        <li>
+            Write a function "from" that takes an integer as input gives another function (we call it gen) <br>
+            that will produce a series of values starting from the integer input 
+            <pre>
+                var index = from(0);
+                index(); //0
+                index(); //1
+                index(); //2
+                ...
+            </pre>
+            <br><hr><br>
+        </li>
+        <li>
+            Write a "to" function that takes a generator and an end value
+            <br> and returns a generator that will produce numbers up to that limit
+            <pre>
+                var index1 = to(from(11), 12);
+                index1(); //11
+                index1(); //12
+                index1(); //undefined
+                ...
+            </pre>
+            <br><hr><br>
+        </li>
+        <li>
+            Write a "fromTo" function that produces a generator that will produce values
+            in a range
+            <pre>
+                var index1 = fromTo(5, 7);
+                index1(); //5
+                index1(); //6
+                index1(); //undefined
+                ...
+            </pre>
+            <br><hr><br>
+        </li>
+        <li>
+            Write an "element" function that takes an array and a generator and <br>
+            returns a generator that will produce the elements from the array <br>
+            in the range of the generator
+            <pre>
+                var ele = element(['apple', 'banana', 'corn', 'drink', 'eat'], fromTo(1, 4));
+                ele(); //'banana'
+                ele(); //'corn'
+                ele(); //'drink'
+                index1(); //undefined
+                ...
+            </pre>
+            <br><hr><br>
+        </li>
+        <li>
+            Modify the element function so that generator argument is optional 
+            <br> if the generator is not provided then each element of the array will be <br>
+            produced
+            <br><hr><br>
+        </li>
+        <li>
+            Write a function "collect" that takes a generator and an array
+            <br> and produces a function that will collect the results of the generator in an array
+            <pre>
+                var array = [],
+                    col = collect(fromTo(0, 2), array);
+                col();//0
+                col();//1
+                col();//undefined
+                array //[0, 1];
+            </pre>
+            <br><hr><br>
+        </li>
+        <li>
+            Write a function "filter" that takes a generator and a predicate- returns
+            true/false
+            <br> and produces a generator that produces only the values approved by the
+            pradicate
+            <pre>
+                var fil = filter(fromTo(0, 5),
+                              function third(value){
+                                return (value%3) === 0;
+                              });
+          
+          
+                fil(); //0
+                fil(); //3
+                fil(); //undefined
+          
+            </pre>
+            <br><hr><br>
+        </li>
+        <li>
+            Write a function "concat" that takes two generators and a and produces a
+            generator that combines the sequences.
+            <pre>
+                var con = concat(fromTo(0, 5), fromTo(3, 7));
+          
+                con(); //0
+                con(); //1
+                con(); //2
+                con(); //3
+                con(); //4
+                con(); //3
+                con(); //4
+                con(); //5
+                con(); //6
+                con(); //7
+                con(); //undefined
+                con(); //undefined
+                con(); //undefined
+            </pre>
+            <br><hr><br>
+        </li>
+        <li>
+            Make a function "gensymf" that makes a function that generate unique sysmbols
+            <pre>
+                var geng = gensymf("G"), genh = gensymf("H");
+                geng(); //G1
+                genh(); //H1
+                geng(); //G2
+                genh(); //H2
+          
+              </pre>
+            <br><hr><br>
+        </li>
+        <li>
+            Write a function gensymff that takes a unary function and a seed and
+            returns a gensymf <br>
+            
+            More specs are: unary function will give numbers and seed is the
+            initial value
+            <pre>
+                var gensymf = gensymff(inc, 0);
+                var geng = gensymf("G"), genh = gensymf("H");
+                geng(); //G1
+                genh(); //H1
+                geng(); //G2
+                genh(); //H2
+          
+            </pre>
+            <br><hr><br>
+        </li>
+        <li>
+            Make a function "fibonaccif" that returns a generator that will return
+            the next fibonnacci number
+            <pre>
+                var fib = fibonaccif(0, 1);
+                fib(); //0
+                fib(); //1
+                fib(); //1
+                fib(); //2
+                fib(); //3
+                fib(); //5
+                fib(); //8
+                fib(); //13
+            </pre>
+            <br><hr><br>
+        </li>
+        <li><br><hr><br></li>
+        <li><br><hr><br></li>
+    </ol>
+</body>
+<script type="text/javascript">
+    var items = document.querySelectorAll("body>ol>li");
+    items.forEach((item, index)=>{
+        item.addEventListener("click", function(){
+            item.classList.toggle('show')
+        })
+    });
+
+</script>
+<script type="text/javascript" src="ex.js"></script>
+</html>
