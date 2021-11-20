@@ -252,8 +252,158 @@
             </pre>
             <br><hr><br>
         </li>
-        <li><br><hr><br></li>
-        <li><br><hr><br></li>
+        <li>
+            Write a counter function that returns an object
+            containing two functions that implement an up/down counter,
+            hiding the counter
+            
+            <pre>
+                var object = counter(10), up = object.up, down = object.down;
+                up(); //11
+                down(); //10
+                down(); //9
+                up(); //10
+            </pre>
+            
+            <br><hr><br>
+        </li>
+        <li>
+            Make a revocable function that takes a binary function
+            and returns an object containing an invoke function that <br> can invoke the
+            the binary function and a revoke function that disables the invoke function
+          
+            <pre>
+                var rev = revocable(add), add_rev = rev.invoke;
+                add_rev(3, 4); //7
+                rev.revoke();
+                add_rev(5, 7);//undefined
+            </pre>
+            <br><hr><br>
+        </li>
+        <li>
+            Write a function "m" that takes a value and an optional source string
+            and return them in an object
+            <pre>
+                m(Math.PI, "pi"); // {value:3.1415..., source: "pi"}
+            </pre>
+            <br><hr><br>
+        </li>
+        <li>
+            Write a function addm that takes two m objects and returns an m object<br>
+            with value as sum of two values and source as (source1 + source2)
+            <br><hr><br>
+        </li>
+        <li>
+            Write a function "liftm" that takes a binary function and a string
+            and returns a function that acts on m objects
+            <pre>
+                var addm = liftm(add, "+");
+                JSON.stringify(addm(m(3), m(4))); //{"value": 7, "source": "(3+4)"}
+        
+                var mulm = liftm(mul, "*");
+                JSON.stringify(mulm(m(3), m(4))); //{"value": 12, "source": "(3*4)"}
+            </pre>
+            <br><hr><br>
+        </li>
+        <li>
+            Modify the function liftm so that the function it produces can accept
+            arguments that are either numbers or m objects
+            <pre>
+                function liftm(binaryFunction, string) {
+                    return function (m1, m2) {
+                              if(typeof m1 === "number"){
+                                m1 = m(m1);
+                              }
+                              if(typeof m2 === "number"){
+                                m2 = m(m2);
+                              }
+                              return m(binaryFunction(m1.value, m2.value),
+                                      "(" + m1.source + string + m2.source + ")");
+                    };
+                  }
+            </pre>
+            <br><hr><br>
+        </li>
+        <li>
+            Write a function "exp" that evaluates simple array expressions
+            <pre>
+                var sae = [mul, 5, 11];
+                exp(sae); //55
+                exp(42);  //42 so for a number it gives a number out
+            </pre>
+            <br><hr><br>
+        </li>
+        <li>
+            Modify exp to evaluate nested array expressions.
+            <pre>
+                var nae = [
+                    Math.sqrt,
+                    [
+                        add,
+                        [square, 3],
+                        [square, 4]
+                    ]
+                ];
+                exp(nae); //5
+            </pre>
+            hint: use Array.isArray(value) to see if the input is an array
+            <br><hr><br>
+        </li>
+        <li>
+            Write a function addg that adds from many invocations, untill it sees
+            an empty invocation.
+            Hint: It involves a function that returns itself
+            <pre>
+                addg(); //undefined
+                addg(2)();//2
+                addg(2)(7)();//9
+            </pre>
+            <br><hr><br>
+        </li>
+        <li>
+            Write a function liftg that takes a binary function and apply it to many invocations,
+            untill it sees
+            an empty invocation. <br>
+            Hint from last challenge (jschallenge9.1.php dont worry about it) It involves a function that returns itself
+            <pre>
+                liftg(mul)(); //undefined
+                liftg(mul)(3)();//3
+                liftg(mul)(2)(7)();//14
+            </pre>
+            <br><hr><br>
+        </li>
+        <li>
+            
+            <br><hr><br>
+        </li>
+        <li>
+            
+            <br><hr><br>
+        </li>
+        <li>
+            
+            <br><hr><br>
+        </li>
+        <li>
+            
+            <br><hr><br>
+        </li>
+        <li>
+            
+            <br><hr><br>
+        </li>
+        <li>
+            
+            <br><hr><br>
+        </li>
+        <li>
+            
+            <br><hr><br>
+        </li>
+        <li>
+            
+            <br><hr><br>
+        </li>
     </ol>
 </body>
 <script type="text/javascript">

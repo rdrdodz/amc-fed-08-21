@@ -160,3 +160,136 @@ console.log(genFromTo());
 console.log(genFromTo());
 console.log(genFromTo());
 console.log(genFromTo());
+
+//for #13
+var element = function(arr, gen){
+    return function(){
+        return arr[gen()];
+    };
+};
+
+var arr = ['apple', 'banana', 'corn', 'drink', 'eat']
+var gen = fromTo(1, 4);
+
+var eleGen = element(arr, gen);
+
+console.log("#13");
+console.log(eleGen());
+console.log(eleGen());
+console.log(eleGen());
+console.log(eleGen());
+console.log(eleGen());
+console.log(eleGen());
+
+// #14
+
+var element = function(arr, gen){
+    var i = 0;
+    return function(){
+        if(gen === undefined){
+            return arr[i++];
+        }else{
+            return arr[gen()];
+        }
+        
+    };
+};
+
+var eleGen = element(arr);
+console.log("#14");
+console.log(eleGen());
+console.log(eleGen());
+console.log(eleGen());
+console.log(eleGen());
+console.log(eleGen());
+console.log(eleGen());
+
+// #15 
+
+var collect = function(gen, arr){
+    return function(){
+        var x = gen();
+        if(x !== undefined){
+            arr.push(x);
+        }
+    };
+};
+
+console.log("#15");
+var arr = [];
+var coll = collect(fromTo(100,105), arr);
+
+coll();
+console.log(arr);
+coll();
+console.log(arr);
+coll();
+console.log(arr);
+coll();
+console.log(arr);
+coll();
+console.log(arr);
+coll();
+console.log(arr);
+coll();
+console.log(arr);
+coll();
+console.log(arr);
+coll();
+console.log(arr);
+coll();
+console.log(arr);
+coll();
+console.log(arr);
+
+var filter = function(gen, pradicate){
+    var x;
+    return function(){
+        do{
+            x = gen();
+            if(x === undefined){
+                break;
+            }
+        }while(!pradicate(x));
+        return x;
+    }
+}
+
+var fil = filter(
+                    fromTo(0, 7), 
+                    function third(value){
+                                return (value%3) === 0;
+                              }
+                );
+
+console.log("#16");
+console.log(fil());
+console.log(fil());
+console.log(fil());
+console.log(fil());
+console.log(fil());
+console.log(fil());
+
+var concat = function(gen1, gen2){
+    var x;
+    return function(){
+        x = gen1();
+        if(x !== undefined){
+            return x;
+        }
+        return gen2();
+    }
+};
+
+var con = concat(fromTo(0,3), fromTo(100,102));
+
+console.log("#17");
+console.log(con());
+console.log(con());
+console.log(con());
+console.log(con());
+console.log(con());
+console.log(con());
+console.log(con());
+console.log(con());
+
